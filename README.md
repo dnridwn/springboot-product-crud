@@ -12,9 +12,6 @@ This project is a Spring Boot application connected to a MySQL database and pack
 - [Configuration](#configuration)
 - [Database Initialization](#database-initialization)
 - [API Endpoints](#api-endpoints)
-- [Built With](#built-with)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Getting Started
 
@@ -87,3 +84,8 @@ spring.datasource.username=${SPRING_DATASOURCE_USERNAME:your_user}
 spring.datasource.password=${SPRING_DATASOURCE_PASSWORD:your_password}
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.jpa.hibernate.ddl-auto=update
+```
+
+## API Endpoints
+
+Please refer to [Swagger API Docs](./api-docs.yml)
