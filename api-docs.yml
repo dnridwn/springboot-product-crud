@@ -1,0 +1,650 @@
+openapi: 3.0.3
+info:
+  version: 0.0.1
+  title: Product CRUD API Documentation
+  description: This is a simple CRUD API documentation for products and categories
+
+servers:
+  - url: http://localhost:8080
+
+tags:
+  - name: Product
+  - name: Category
+
+paths:
+  /products:
+    get:
+      tags:
+        - Product
+      summary: Get all products
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    default: success
+                  message:
+                    type: string
+                    default: null
+                  data:
+                    $ref: '#/components/schemas/ProductListResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    default: failed
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    default: null
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    default: failed
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    default: null
+    post:
+      tags:
+        - Product
+      summary: Create a new product
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    default: success
+                  message:
+                    type: string
+                    default: null
+                  data:
+                    $ref: '#/components/schemas/ProductResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    default: failed
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    default: null
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    default: failed
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    default: null
+  /products/{id}:
+    get:
+      tags:
+        - Product
+      summary: Get a product by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the product to get
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    default: success
+                  message:
+                    type: string
+                    default: null
+                  data:
+                    $ref: '#/components/schemas/ProductResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    default: failed
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    default: null
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    default: failed
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    default: null
+    put:
+      tags:
+        - Product
+      summary: Update a product by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the product to update
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    default: success
+                  message:
+                    type: string
+                    default: null
+                  data:
+                    $ref: '#/components/schemas/ProductResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    default: failed
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    default: null
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    default: failed
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    default: null
+    delete:
+      tags:
+        - Product
+      summary: Delete a product by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the product to delete
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    default: success
+                  message:
+                    type: string
+                    default: null
+                  data:
+                    type: object
+                    default: null
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    default: failed
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    default: null
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    default: failed
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    default: null
+  /categories:
+    get:
+      tags:
+        - Category
+      summary: Get all categories
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    default: success
+                  message:
+                    type: string
+                    default: null
+                  data:
+                    $ref: '#/components/schemas/CategoryListResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    default: failed
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    default: null
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    default: failed
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    default: null
+    post:
+      tags:
+          - Category
+      summary: Create a new category
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    default: success
+                  message:
+                    type: string
+                    default: null
+                  data:
+                    $ref: '#/components/schemas/CategoryResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    default: failed
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    default: null
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    default: failed
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    default: null
+  /categories/{id}:
+    get:
+      tags:
+          - Category
+      summary: Get a category by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the category to get
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    default: success
+                  message:
+                    type: string
+                    default: null
+                  data:
+                    $ref: '#/components/schemas/CategoryResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    default: failed
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    default: null
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    default: failed
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    default: null
+    put:
+      tags:
+          - Category
+      summary: Update a category by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the category to update
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    default: success
+                  message:
+                    type: string
+                    default: null
+                  data:
+                    $ref: '#/components/schemas/CategoryResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    default: failed
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    default: null
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    default: failed
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    default: null
+    delete:
+      tags:
+          - Category
+      summary: Delete a category by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the category to delete
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    default: success
+                  message:
+                    type: string
+                    default: null
+                  data:
+                    type: object
+                    default: null
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    default: failed
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    default: null
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    default: failed
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    default: null
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+        code:
+          type: string
+        name:
+          type: string
+        price:
+          type: number
+          format: double
+        category:
+          $ref: '#/components/schemas/Category'
+
+    ProductRequest:
+      type: object
+      required:
+        - name
+        - price
+      properties:
+        code:
+          type: string
+        name:
+          type: string
+        price:
+          type: number
+          format: double
+        category_id:
+          type: integer
+          format: integer
+
+    ProductListResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/Product'
+
+    ProductResponse:
+      type: object
+      $ref: '#/components/schemas/Product'
+
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+
+    CategoryRequest:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+
+    CategoryListResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/Category'
+
+    CategoryResponse:
+      type: object
+      $ref: '#/components/schemas/Category'
