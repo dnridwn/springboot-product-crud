@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.restful</groupId>
     <artifactId>product_crud</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>product_crud</name>
     <description>product_crud</description>
     <url/>

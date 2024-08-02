@@ -37,12 +37,17 @@ These instructions will get you a copy of the project up and running on your loc
     cd your-repo
     ```
 
-2. **Build and start the containers:**
+2. **Build the project:**
+    ```sh
+    mvn clean package
+    ```
+
+3. **Build and start the containers:**
     ```sh
     docker-compose up --build
     ```
 
-3. The application should now be running at `http://localhost:8080`.
+4. The application should now be running at `http://localhost:8080`.
 
 #### Running Manually
 
