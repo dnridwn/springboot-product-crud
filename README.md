@@ -30,7 +30,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 1. **Clone the repository:**
     ```sh
-    git clone https://github.com/your-username/your-repo.git
+    git clone https://github.com/dnridwn/springboot-product-crud
     cd your-repo
     ```
 
@@ -50,7 +50,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 1. **Clone the repository:**
     ```sh
-    git clone https://github.com/your-username/your-repo.git
+    git clone https://github.com/dnridwn/springboot-product-crud
     cd your-repo
     ```
 
